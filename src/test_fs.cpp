@@ -1,11 +1,11 @@
 #include <iostream>
-#include "MemFS.h"
+#include "../include/MemFS.h"
 
 
 int main() {
   MemFileSystem fs;
   auto &root = fs.Root();
-  root.CreateFile("a.txt");
+  root.CreateFile("a.txt", 0644);
   root.GetFile<MemFile>("a.txt")->Write("hello", 6, 0);
   fs.Link("/a.txt", "/b.txt");
   auto *a = root.GetFile<MemFile>("a.txt");

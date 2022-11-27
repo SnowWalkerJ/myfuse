@@ -1,5 +1,5 @@
-#include "MemFS.h"
-#include "Path.h"
+#include "../include/MemFS.h"
+#include "../include/Path.h"
 #include <unistd.h>
 
 MemFile::MemFile(int owner, int mode, FileId id) : RegularFile(owner, mode), id_(id) {}

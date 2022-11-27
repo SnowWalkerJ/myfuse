@@ -4,8 +4,8 @@
 #include <fuse.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "MemFS.h"
-#include "Path.h"
+#include "../include/MemFS.h"
+#include "../include/Path.h"
 
 extern "C" {
 

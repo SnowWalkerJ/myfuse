@@ -5,7 +5,12 @@ include_directories(/usr/local/include)
 link_directories(/usr/local/lib)
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(myfuse main.cpp BufferIO.cpp BufferIO.h FileSystem.h MemFS.cpp MemFS.h Path.cpp Path.h)
-target_link_libraries(myfuse fuse)
+add_library(Path src/Path.cpp include/Path.h)
+add_library(BufferIO src/BufferIO.cpp include/BufferIO.h)
+add_library(MemFS src/MemFS.cpp include/MemFS.h include/FileSystem.h)
 
-add_executable(test_fs test_fs.cpp BufferIO.cpp BufferIO.h FileSystem.h MemFS.cpp MemFS.h Path.cpp Path.h)
+add_executable(myfuse src/main.cpp)
+target_link_libraries(myfuse fuse Path BufferIO MemFS)
+
+add_executable(test_fs src/test_fs.cpp)
+target_link_libraries(test_fs Path BufferIO MemFS)
